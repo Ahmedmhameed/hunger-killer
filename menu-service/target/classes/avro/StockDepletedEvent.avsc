@@ -1,0 +1,13 @@
+{
+  "namespace": "com.hungerkiller.events",
+  "type": "record",
+  "name": "StockDepletedEvent",
+  "fields": [
+    {"name": "itemId", "type": "string"},
+    {"name": "itemName", "type": "string"},
+    {"name": "restaurantId", "type": "string"},
+    {"name": "remainingQty", "type": "double"},
+    {"name": "isOutOfStock", "type": "boolean"},
+    {"name": "depleteAt", "type": "string"}
+  ]
+}

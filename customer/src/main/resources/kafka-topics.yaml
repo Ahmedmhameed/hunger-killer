@@ -1,0 +1,8 @@
+# Add Kafka configuration to application.yaml if needed
+
+spring:
+  kafka:
+    topics:
+      customer-registered: customer.registered
+
+# This section can be added to application.yaml
