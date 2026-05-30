@@ -12,7 +12,6 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Customer extends BaseEntity {
 
     @Column(name = "first_name", nullable = false, length = 100)
@@ -31,14 +30,12 @@ public class Customer extends BaseEntity {
     private String passwordHash;
 
     @Column(name = "loyalty_points", nullable = false)
-    @Builder.Default
     private Integer loyaltyPoints = 0;
 
     @Column(name = "dietary_notes", columnDefinition = "TEXT")
     private String dietaryNotes;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    @Builder.Default
     private Set<Address> addresses = new HashSet<>();
 
     public void addAddress(Address address) {

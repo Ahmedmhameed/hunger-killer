@@ -4,7 +4,6 @@ import com.ahmedkh.kitchen.dto.response.KitchenTicketResponse;
 import com.ahmedkh.kitchen.entity.*;
 import com.ahmedkh.kitchen.exception.BusinessException;
 import com.ahmedkh.kitchen.exception.ResourceNotFoundException;
-import com.ahmedkh.kitchen.kafka.KitchenEventProducer;
 import com.ahmedkh.kitchen.mapper.KitchenMapper;
 import com.ahmedkh.kitchen.repository.KitchenStationRepository;
 import com.ahmedkh.kitchen.repository.KitchenTicketRepository;
@@ -25,16 +24,14 @@ public class KitchenTicketServiceImpl implements KitchenTicketService {
     private final KitchenTicketRepository ticketRepository;
     private final KitchenStationRepository stationRepository;
     private final KitchenMapper kitchenMapper;
-    private final KitchenEventProducer eventProducer;
 
     public KitchenTicketServiceImpl(KitchenTicketRepository ticketRepository,
                                    KitchenStationRepository stationRepository,
-                                   KitchenMapper kitchenMapper,
-                                   KitchenEventProducer eventProducer) {
+                                   KitchenMapper kitchenMapper
+                                 ) {
         this.ticketRepository = ticketRepository;
         this.stationRepository = stationRepository;
         this.kitchenMapper = kitchenMapper;
-        this.eventProducer = eventProducer;
     }
 
     @Override
@@ -75,9 +72,6 @@ public class KitchenTicketServiceImpl implements KitchenTicketService {
             
             ticket.setStatus(newStatus);
             KitchenTicket updated = ticketRepository.save(ticket);
-
-            // Publish event
-            eventProducer.publishKitchenStatusEvent(updated);
 
             log.info("Ticket status updated successfully: {}", ticketId);
             return kitchenMapper.toTicketResponse(updated);
@@ -123,8 +117,6 @@ public class KitchenTicketServiceImpl implements KitchenTicketService {
         KitchenTicket saved = ticketRepository.save(ticket);
         log.info("Kitchen ticket created successfully: {}", saved.getId());
 
-        // Publish event
-        eventProducer.publishKitchenStatusEvent(saved);
     }
 
     private StationType determineStation(String itemName) {

@@ -8,8 +8,11 @@ import com.ahmedkh.customer.entity.Address;
 import com.ahmedkh.customer.entity.Customer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-
-@Mapper(componentModel = "spring")
+import org.mapstruct.ReportingPolicy;
+@Mapper(
+    componentModel = "spring",
+    unmappedTargetPolicy = ReportingPolicy.IGNORE
+    )
 public interface CustomerMapper {
 
     @Mapping(target = "id", ignore = true)

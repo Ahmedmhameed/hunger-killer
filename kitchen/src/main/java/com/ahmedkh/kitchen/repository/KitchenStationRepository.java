@@ -14,8 +14,6 @@ public interface KitchenStationRepository extends JpaRepository<KitchenStation, 
     Optional<KitchenStation> findByIdAndDeletedFalse(UUID id);
 
     List<KitchenStation> findByRestaurantIdAndDeletedFalse(String restaurantId);
-
-    Optional<KitchenStation> findByRestaurantIdAndStationTypeAndDeletedFalse(String restaurantId, StationType stationType);
-
-    List<KitchenStation> findByRestaurantIdAndStationTypeAndDeletedFalse(String restaurantId, StationType stationType);
-}
+    List<KitchenStation> findByRestaurantIdAndStationTypeAndDeletedFalse(
+            String restaurantId,
+            StationType stationType);}

@@ -1,0 +1,616 @@
+{
+  "info": {
+    "name": "Hunger Killer – Food Ordering System",
+    "_postman_id": "hunger-killer-v1",
+    "description": "API collection for the Hunger Killer microservices project.\n\n## Setup\n1. Start services: Eureka (8761) → Gateway (8080) → Customer (8081) → Order (8085) → Kitchen (8087)\n2. Call **POST /register** or **POST /login** — the token is saved automatically to `{{token}}`\n3. All other requests use `{{token}}` via the collection-level Authorization header\n\n## Base URL\n- Via Gateway: `http://localhost:8080`  *(fix the @RequestMapping bug first)*\n- Customer direct: `http://localhost:8081`\n- Order direct: `http://localhost:8085`\n- Kitchen direct: `http://localhost:8087`\n\n## Bug reminder\nFix `CustomerController.java` line 34 before testing:\n`@RequestMapping(\"/api/v1/customers\")` — remove the `mvn dependency:tree` part.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl",      "value": "http://localhost:8080", "type": "string" },
+    { "key": "customerUrl",  "value": "http://localhost:8081", "type": "string" },
+    { "key": "orderUrl",     "value": "http://localhost:8085", "type": "string" },
+    { "key": "kitchenUrl",   "value": "http://localhost:8087", "type": "string" },
+    { "key": "token",        "value": "", "type": "string" },
+    { "key": "customerId",   "value": "", "type": "string" },
+    { "key": "addressId",    "value": "", "type": "string" },
+    { "key": "orderId",      "value": "", "type": "string" },
+    { "key": "ticketId",     "value": "", "type": "string" }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "item": [
+    {
+      "name": "Customer Service",
+      "description": "Customer registration, login, profile, and addresses. Runs on port 8081.",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.token) {",
+                  "    pm.collectionVariables.set('token', json.data.token);",
+                  "    pm.collectionVariables.set('customerId', json.data.customerId);",
+                  "    console.log('Token saved. Customer ID:', json.data.customerId);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));",
+                  "pm.test('Has token', () => pm.expect(json.data.token).to.be.a('string'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ahmed\",\n  \"lastName\": \"Khalil\",\n  \"email\": \"ahmed@example.com\",\n  \"phone\": \"+970591234567\",\n  \"password\": \"secret123\",\n  \"dietaryNotes\": \"No pork\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "register"]
+            },
+            "description": "Creates a new customer account. On success, the test script auto-saves `token` and `customerId` to collection variables.\n\n**Validation rules:**\n- `firstName` / `lastName`: 2–100 chars, required\n- `email`: valid email format, required\n- `phone`: 10–15 digits, can start with `+`, required\n- `password`: 8–100 chars, required\n- `dietaryNotes`: optional free text\n\n**Returns:** 201 with token + customerId"
+          },
+          "response": [
+            {
+              "name": "201 – Registered",
+              "status": "Created",
+              "code": 201,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Customer registered successfully\",\n  \"data\": {\n    \"customerId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"email\": \"ahmed@example.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9...\"\n  },\n  \"timestamp\": \"2026-05-30T10:00:00\"\n}"
+            },
+            {
+              "name": "400 – Email already registered",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Email already registered\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:00:00\"\n}"
+            },
+            {
+              "name": "400 – Validation error",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"firstName\": \"First name is required\",\n  \"email\": \"Email should be valid\",\n  \"phone\": \"Phone number should be valid (10-15 digits)\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.token) {",
+                  "    pm.collectionVariables.set('token', json.data.token);",
+                  "    pm.collectionVariables.set('customerId', json.data.customerId);",
+                  "    console.log('Token saved. Customer ID:', json.data.customerId);",
+                  "}",
+                  "pm.test('Status 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Has token', () => pm.expect(json.data.token).to.be.a('string'));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ahmed@example.com\",\n  \"password\": \"secret123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "login"]
+            },
+            "description": "Authenticates a customer and returns a JWT token. The test script auto-saves the token.\n\n**Returns:** 200 with token + customerId"
+          },
+          "response": [
+            {
+              "name": "200 – Login successful",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Login successful\",\n  \"data\": {\n    \"customerId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"email\": \"ahmed@example.com\",\n    \"token\": \"eyJhbGciOiJIUzI1NiJ9...\"\n  },\n  \"timestamp\": \"2026-05-30T10:00:00\"\n}"
+            },
+            {
+              "name": "400 – Wrong credentials",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Invalid email or password\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Customer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}"]
+            },
+            "description": "Returns the full customer profile including addresses.\n\n**Auth:** Bearer token required\n\n**Path param:** `customerId` – UUID of the customer (auto-filled from login/register)"
+          },
+          "response": [
+            {
+              "name": "200 – Customer found",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Customer retrieved successfully\",\n  \"data\": {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"firstName\": \"Ahmed\",\n    \"lastName\": \"Khalil\",\n    \"email\": \"ahmed@example.com\",\n    \"phone\": \"+970591234567\",\n    \"loyaltyPoints\": 0,\n    \"dietaryNotes\": \"No pork\",\n    \"addresses\": [],\n    \"createdAt\": \"2026-05-30T10:00:00\",\n    \"updatedAt\": \"2026-05-30T10:00:00\"\n  },\n  \"timestamp\": \"2026-05-30T10:05:00\"\n}"
+            },
+            {
+              "name": "404 – Not found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Customer not found with ID: 550e8400-e29b-41d4-a716-446655440000\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:05:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Customer",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Ahmed\",\n  \"lastName\": \"Updated\",\n  \"phone\": \"+970599999999\",\n  \"dietaryNotes\": \"Vegetarian, no nuts\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}"]
+            },
+            "description": "Updates customer profile. All fields are optional — only send what you want to change.\n\n**Auth:** Bearer token required\n\n**Validation rules:**\n- `firstName` / `lastName`: 2–100 chars if provided\n- `phone`: 10–20 chars if provided\n- `dietaryNotes`: optional free text"
+          },
+          "response": [
+            {
+              "name": "200 – Updated",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Customer updated successfully\",\n  \"data\": {\n    \"id\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"firstName\": \"Ahmed\",\n    \"lastName\": \"Updated\",\n    \"email\": \"ahmed@example.com\",\n    \"phone\": \"+970599999999\",\n    \"loyaltyPoints\": 0,\n    \"dietaryNotes\": \"Vegetarian, no nuts\",\n    \"createdAt\": \"2026-05-30T10:00:00\",\n    \"updatedAt\": \"2026-05-30T10:10:00\"\n  },\n  \"timestamp\": \"2026-05-30T10:10:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Customer",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}"]
+            },
+            "description": "Soft-deletes the customer account (sets `deleted = true` in DB, does not remove the row).\n\n**Auth:** Bearer token required\n\n**Returns:** 204 No Content on success"
+          },
+          "response": [
+            {
+              "name": "204 – Deleted",
+              "status": "No Content",
+              "code": 204,
+              "header": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "Add Address",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.id) {",
+                  "    pm.collectionVariables.set('addressId', json.data.id);",
+                  "    console.log('Address ID saved:', json.data.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"label\": \"Home\",\n  \"street\": \"Al-Rimal Street, Building 12, Apartment 3\",\n  \"city\": \"Gaza\",\n  \"gpsLat\": 31.5017,\n  \"gpsLng\": 34.4667\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}/addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}", "addresses"]
+            },
+            "description": "Adds a delivery address to the customer's account. The test script auto-saves `addressId`.\n\n**Auth:** Bearer token required\n\n**Validation rules:**\n- `label`: 2–50 chars, required (e.g. Home, Work, University)\n- `street`: 5–200 chars, required\n- `city`: 2–100 chars, required\n- `gpsLat` / `gpsLng`: optional doubles"
+          },
+          "response": [
+            {
+              "name": "201 – Address added",
+              "status": "Created",
+              "code": 201,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Address added successfully\",\n  \"data\": {\n    \"id\": \"660e8400-e29b-41d4-a716-446655440001\",\n    \"label\": \"Home\",\n    \"street\": \"Al-Rimal Street, Building 12, Apartment 3\",\n    \"city\": \"Gaza\",\n    \"gpsLat\": 31.5017,\n    \"gpsLng\": 34.4667,\n    \"createdAt\": \"2026-05-30T10:15:00\",\n    \"updatedAt\": \"2026-05-30T10:15:00\"\n  },\n  \"timestamp\": \"2026-05-30T10:15:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Addresses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}/addresses",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}", "addresses"]
+            },
+            "description": "Returns all saved delivery addresses for a customer.\n\n**Auth:** Bearer token required"
+          },
+          "response": [
+            {
+              "name": "200 – List of addresses",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Addresses retrieved successfully\",\n  \"data\": [\n    {\n      \"id\": \"660e8400-e29b-41d4-a716-446655440001\",\n      \"label\": \"Home\",\n      \"street\": \"Al-Rimal Street, Building 12, Apartment 3\",\n      \"city\": \"Gaza\",\n      \"gpsLat\": 31.5017,\n      \"gpsLng\": 34.4667,\n      \"createdAt\": \"2026-05-30T10:15:00\",\n      \"updatedAt\": \"2026-05-30T10:15:00\"\n    }\n  ],\n  \"timestamp\": \"2026-05-30T10:20:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Address",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/customers/{{customerId}}/addresses/{{addressId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "customers", "{{customerId}}", "addresses", "{{addressId}}"]
+            },
+            "description": "Deletes a specific address from the customer's account.\n\n**Auth:** Bearer token required\n\n**Returns:** 204 No Content on success"
+          },
+          "response": [
+            {
+              "name": "204 – Deleted",
+              "status": "No Content",
+              "code": 204,
+              "header": [],
+              "body": ""
+            },
+            {
+              "name": "404 – Address not found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Address not found\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:20:00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Order Service",
+      "description": "Order placement and lifecycle. Runs on port 8085.\n\nNOTE: placeOrder calls Cart, Inventory, and Payment services via Feign. These services are not in the project yet — placeOrder will return a fallback/error until they are running.",
+      "item": [
+        {
+          "name": "Place Order",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.id) {",
+                  "    pm.collectionVariables.set('orderId', json.data.id);",
+                  "    console.log('Order ID saved:', json.data.id);",
+                  "}",
+                  "pm.test('Status 201', () => pm.response.to.have.status(201));"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartId\": \"cart-abc-123\",\n  \"paymentMethod\": \"CASH_ON_DELIVERY\",\n  \"deliveryAddress\": \"Al-Rimal Street, Building 12, Gaza\",\n  \"deliveryAddressId\": null,\n  \"specialInstructions\": \"Ring the bell twice\",\n  \"cardToken\": null\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders"]
+            },
+            "description": "Places a new order from the customer's active cart. Customer ID is read from the JWT token automatically — no need to send it in the body.\n\n**Auth:** Bearer token required\n\n**Fields:**\n- `cartId` (required): must match the customer's active cart ID\n- `paymentMethod` (required): `CASH_ON_DELIVERY` | `CREDIT_CARD` | `MOBILE_WALLET`\n- `deliveryAddress`: free text address string (use this OR `deliveryAddressId`)\n- `deliveryAddressId`: UUID of a saved address (optional, use instead of `deliveryAddress`)\n- `specialInstructions`: free text for the kitchen/driver (optional)\n- `cardToken`: required only for `CREDIT_CARD` or `MOBILE_WALLET` payments\n\n**⚠ Depends on:** Cart Service, Inventory Service, and Payment Service (not yet built)"
+          },
+          "response": [
+            {
+              "name": "201 – Order placed",
+              "status": "Created",
+              "code": 201,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Order placed successfully\",\n  \"data\": {\n    \"id\": \"770e8400-e29b-41d4-a716-446655440002\",\n    \"customerId\": \"550e8400-e29b-41d4-a716-446655440000\",\n    \"restaurantId\": \"rest-001\",\n    \"cartId\": \"cart-abc-123\",\n    \"deliveryAddress\": \"Al-Rimal Street, Building 12, Gaza\",\n    \"status\": \"PLACED\",\n    \"paymentMethod\": \"CASH_ON_DELIVERY\",\n    \"specialInstructions\": \"Ring the bell twice\",\n    \"subtotal\": 25.00,\n    \"deliveryFee\": 5.00,\n    \"grandTotal\": 30.00,\n    \"estimatedDeliveryMinutes\": 45,\n    \"placedAt\": \"2026-05-30T10:30:00\",\n    \"items\": [\n      {\n        \"id\": \"item-uuid-1\",\n        \"itemId\": \"menu-item-001\",\n        \"itemName\": \"Chicken Shawarma\",\n        \"unitPrice\": 12.50,\n        \"quantity\": 2,\n        \"subtotal\": 25.00\n      }\n    ],\n    \"statusHistory\": [\n      {\n        \"status\": \"PLACED\",\n        \"changedAt\": \"2026-05-30T10:30:00\",\n        \"note\": \"Order placed by customer\"\n      }\n    ]\n  },\n  \"timestamp\": \"2026-05-30T10:30:00\"\n}"
+            },
+            {
+              "name": "400 – Cart empty or not found",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Cart not found for customer: 550e8400-e29b-41d4-a716-446655440000\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:30:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Order",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/{{orderId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "{{orderId}}"]
+            },
+            "description": "Returns full order details including all items and status history.\n\n**Auth:** Bearer token required\n\n**Path param:** `orderId` – UUID (auto-filled from Place Order)"
+          },
+          "response": [
+            {
+              "name": "200 – Order found",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Order retrieved\",\n  \"data\": {\n    \"id\": \"770e8400-e29b-41d4-a716-446655440002\",\n    \"status\": \"PREPARING\",\n    \"paymentMethod\": \"CASH_ON_DELIVERY\",\n    \"subtotal\": 25.00,\n    \"deliveryFee\": 5.00,\n    \"grandTotal\": 30.00,\n    \"items\": [ { \"itemName\": \"Chicken Shawarma\", \"quantity\": 2, \"subtotal\": 25.00 } ],\n    \"statusHistory\": [\n      { \"status\": \"PLACED\",    \"changedAt\": \"2026-05-30T10:30:00\" },\n      { \"status\": \"CONFIRMED\", \"changedAt\": \"2026-05-30T10:32:00\" },\n      { \"status\": \"PREPARING\", \"changedAt\": \"2026-05-30T10:35:00\" }\n    ]\n  },\n  \"timestamp\": \"2026-05-30T10:40:00\"\n}"
+            },
+            {
+              "name": "404 – Order not found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Order not found\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:40:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Orders for Customer",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/customer/{{customerId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "customer", "{{customerId}}"]
+            },
+            "description": "Returns a list of all orders placed by a specific customer.\n\n**Auth:** Bearer token required\n\n**Path param:** `customerId` – UUID (auto-filled from login/register)"
+          },
+          "response": [
+            {
+              "name": "200 – Orders list",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Orders retrieved\",\n  \"data\": [\n    {\n      \"id\": \"770e8400-e29b-41d4-a716-446655440002\",\n      \"status\": \"DELIVERED\",\n      \"grandTotal\": 30.00,\n      \"placedAt\": \"2026-05-30T10:30:00\"\n    }\n  ],\n  \"timestamp\": \"2026-05-30T11:00:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Cancel Order",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/orders/{{orderId}}/cancel",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "orders", "{{orderId}}", "cancel"]
+            },
+            "description": "Cancels an order. Only works if the current status is `PLACED` or `CONFIRMED`. No request body needed.\n\n**Auth:** Bearer token required\n\n**Order status flow:** PLACED → CONFIRMED → PREPARING → READY → DELIVERING → DELIVERED\n\nCancellation is only allowed at PLACED or CONFIRMED."
+          },
+          "response": [
+            {
+              "name": "200 – Order canceled",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Order canceled\",\n  \"data\": {\n    \"id\": \"770e8400-e29b-41d4-a716-446655440002\",\n    \"status\": \"CANCELED\",\n    \"grandTotal\": 30.00\n  },\n  \"timestamp\": \"2026-05-30T10:35:00\"\n}"
+            },
+            {
+              "name": "400 – Cannot cancel",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Cannot cancel order in PREPARING status\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:35:00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kitchen Service",
+      "description": "Kitchen ticket management. Runs on port 8087.\n\nTickets are normally created automatically when an order is placed (via Kafka event). Use these endpoints to view or update ticket status.",
+      "item": [
+        {
+          "name": "Get Ticket",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var json = pm.response.json();",
+                  "if (json.data && json.data.id) {",
+                  "    pm.collectionVariables.set('ticketId', json.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/kitchen/tickets/{{ticketId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "kitchen", "tickets", "{{ticketId}}"]
+            },
+            "description": "Returns a kitchen ticket by its UUID.\n\n**Auth:** Bearer token required\n\n**Path param:** `ticketId` – UUID of the kitchen ticket"
+          },
+          "response": [
+            {
+              "name": "200 – Ticket found",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Ticket retrieved successfully\",\n  \"data\": {\n    \"id\": \"880e8400-e29b-41d4-a716-446655440003\",\n    \"orderId\": \"770e8400-e29b-41d4-a716-446655440002\",\n    \"restaurantId\": \"rest-001\",\n    \"status\": \"NEW\",\n    \"specialInstructions\": \"Ring the bell twice\",\n    \"estimatedReadyAt\": \"2026-05-30T11:00:00\",\n    \"actualReadyAt\": null,\n    \"items\": [\n      { \"itemId\": \"menu-item-001\", \"itemName\": \"Chicken Shawarma\", \"quantity\": 2 }\n    ],\n    \"createdAt\": \"2026-05-30T10:30:00\",\n    \"updatedAt\": \"2026-05-30T10:30:00\"\n  },\n  \"timestamp\": \"2026-05-30T10:40:00\"\n}"
+            },
+            {
+              "name": "404 – Ticket not found",
+              "status": "Not Found",
+              "code": 404,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Ticket not found\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:40:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get Active Tickets by Restaurant",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/kitchen/tickets/restaurant/rest-001",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "kitchen", "tickets", "restaurant", "rest-001"]
+            },
+            "description": "Returns all active kitchen tickets for a given restaurant.\n\n**Auth:** Bearer token required\n\n**Path param:** `restaurantId` – string identifier of the restaurant (e.g. `rest-001`)\n\nChange `rest-001` in the URL to your actual restaurant ID."
+          },
+          "response": [
+            {
+              "name": "200 – Active tickets",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Active tickets retrieved successfully\",\n  \"data\": [\n    {\n      \"id\": \"880e8400-e29b-41d4-a716-446655440003\",\n      \"orderId\": \"770e8400-e29b-41d4-a716-446655440002\",\n      \"status\": \"IN_PREPARATION\",\n      \"items\": [ { \"itemName\": \"Chicken Shawarma\", \"quantity\": 2 } ]\n    }\n  ],\n  \"timestamp\": \"2026-05-30T10:45:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update Ticket Status",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"IN_PREPARATION\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v1/kitchen/tickets/{{ticketId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "v1", "kitchen", "tickets", "{{ticketId}}", "status"]
+            },
+            "description": "Updates the status of a kitchen ticket. Used by kitchen staff to track preparation progress.\n\n**Auth:** Bearer token required\n\n**Valid status values:**\n- `NEW` – ticket just created, not started yet\n- `IN_PREPARATION` – kitchen is preparing the order\n- `READY` – food is ready for pickup/delivery\n- `CANCELED` – order was canceled\n\n**⚠ Bug note:** The field is typed as String in the code, so any value passes validation. Fix: change to `KitchenStatus` enum type."
+          },
+          "response": [
+            {
+              "name": "200 – Status updated",
+              "status": "OK",
+              "code": 200,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Ticket status updated successfully\",\n  \"data\": {\n    \"id\": \"880e8400-e29b-41d4-a716-446655440003\",\n    \"orderId\": \"770e8400-e29b-41d4-a716-446655440002\",\n    \"status\": \"IN_PREPARATION\",\n    \"updatedAt\": \"2026-05-30T10:50:00\"\n  },\n  \"timestamp\": \"2026-05-30T10:50:00\"\n}"
+            },
+            {
+              "name": "400 – Invalid status",
+              "status": "Bad Request",
+              "code": 400,
+              "header": [{ "key": "Content-Type", "value": "application/json" }],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Invalid kitchen status: BLAH\",\n  \"data\": null,\n  \"timestamp\": \"2026-05-30T10:50:00\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Health Checks",
+      "description": "Actuator health endpoints for each service. No auth required.",
+      "item": [
+        {
+          "name": "Customer Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{customerUrl}}/actuator/health",
+              "host": ["{{customerUrl}}"],
+              "path": ["actuator", "health"]
+            },
+            "description": "Check if customer service is running. Returns UP/DOWN status."
+          },
+          "response": [
+            {
+              "name": "200 – UP",
+              "status": "OK",
+              "code": 200,
+              "body": "{ \"status\": \"UP\" }"
+            }
+          ]
+        },
+        {
+          "name": "Order Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{orderUrl}}/actuator/health",
+              "host": ["{{orderUrl}}"],
+              "path": ["actuator", "health"]
+            }
+          }
+        },
+        {
+          "name": "Kitchen Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{kitchenUrl}}/actuator/health",
+              "host": ["{{kitchenUrl}}"],
+              "path": ["actuator", "health"]
+            }
+          }
+        },
+        {
+          "name": "Eureka Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8761",
+              "raw": "http://localhost:8761"
+            },
+            "description": "Opens the Eureka service registry dashboard. Check which services are registered and running."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.ahmedkh:notification >----------------------
+[INFO] Building Notification Service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ notification ---
+[INFO] Deleting /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ notification ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ notification ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 12 source files with javac [debug release 21] to target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[26,13] cannot find symbol
+  symbol:   method autoCreateTopic()
+  location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[27,60] cannot find symbol
+  symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+  location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[68,13] cannot find symbol
+  symbol:   method autoCreateTopic()
+  location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[69,60] cannot find symbol
+  symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+  location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[114,13] cannot find symbol
+  symbol:   method autoCreateTopic()
+  location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[115,60] cannot find symbol
+  symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+  location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[153,13] cannot find symbol
+  symbol:   method autoCreateTopic()
+  location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[154,60] cannot find symbol
+  symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+  location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[213,13] cannot find symbol
+  symbol:   method autoCreateTopic()
+  location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[214,60] cannot find symbol
+  symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+  location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[29,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,24] cannot find symbol
+  symbol:   method getTitle()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,44] cannot find symbol
+  symbol:   method getRecipient()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,68] cannot find symbol
+  symbol:   method getType()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[32,40] cannot find symbol
+  symbol:   method getType()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[32,68] cannot find symbol
+  symbol:   method getType()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[34,49] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[35,36] cannot find symbol
+  symbol:   method getCustomerId()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[36,33] cannot find symbol
+  symbol:   method getOrderId()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[37,35] cannot find symbol
+  symbol:   method getRecipient()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[38,31] cannot find symbol
+  symbol:   method getTitle()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[39,33] cannot find symbol
+  symbol:   method getMessage()
+  location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[47,21] cannot find symbol
+  symbol:   method setDeleted(boolean)
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[50,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[50,82] cannot find symbol
+  symbol:   method getId()
+  location: variable savedNotification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[59,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[70,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[81,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[92,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[102,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[106,21] cannot find symbol
+  symbol:   method setIsRead(boolean)
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[116,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[120,21] cannot find symbol
+  symbol:   method setDeleted(boolean)
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[122,9] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[129,36] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.response.NotificationResponse
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[130,33] cannot find symbol
+  symbol:   method getId()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[131,41] cannot find symbol
+  symbol:   method getCustomerId()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[132,38] cannot find symbol
+  symbol:   method getOrderId()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[133,40] cannot find symbol
+  symbol:   method getRecipient()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[134,36] cannot find symbol
+  symbol:   method getTitle()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[135,38] cannot find symbol
+  symbol:   method getMessage()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[136,35] cannot find symbol
+  symbol:   method getType()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[137,37] cannot find symbol
+  symbol:   method getStatus()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,40] cannot find symbol
+  symbol:   method getCreatedAt()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,78] cannot find symbol
+  symbol:   method getCreatedAt()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,108] cannot find symbol
+  symbol:   method getSentAt()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[139,37] cannot find symbol
+  symbol:   method getSentAt()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[140,37] cannot find symbol
+  symbol:   method getIsRead()
+  location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[35,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[42,17] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[49,70] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[60,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[77,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[83,17] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[94,70] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[106,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[123,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[128,17] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[134,70] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[145,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[162,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[168,17] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[193,70] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[205,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[222,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[228,17] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[234,70] cannot find symbol
+  symbol:   method builder()
+  location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[246,13] cannot find symbol
+  symbol:   variable log
+  location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[INFO] 68 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.774 s
+[INFO] Finished at: 2026-05-29T15:55:11+03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.11.0:compile (default-compile) on project notification: Compilation failure: Compilation failure: 
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[26,13] cannot find symbol
+[ERROR]   symbol:   method autoCreateTopic()
+[ERROR]   location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[27,60] cannot find symbol
+[ERROR]   symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+[ERROR]   location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[68,13] cannot find symbol
+[ERROR]   symbol:   method autoCreateTopic()
+[ERROR]   location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[69,60] cannot find symbol
+[ERROR]   symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+[ERROR]   location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[114,13] cannot find symbol
+[ERROR]   symbol:   method autoCreateTopic()
+[ERROR]   location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[115,60] cannot find symbol
+[ERROR]   symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+[ERROR]   location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[153,13] cannot find symbol
+[ERROR]   symbol:   method autoCreateTopic()
+[ERROR]   location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[154,60] cannot find symbol
+[ERROR]   symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+[ERROR]   location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[213,13] cannot find symbol
+[ERROR]   symbol:   method autoCreateTopic()
+[ERROR]   location: @interface org.springframework.kafka.annotation.RetryableTopic
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[214,60] cannot find symbol
+[ERROR]   symbol:   variable SUFFIX_WITH_EXCEPTION_CLASS_NAME
+[ERROR]   location: class org.springframework.kafka.retrytopic.TopicSuffixingStrategy
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[29,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,24] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,44] cannot find symbol
+[ERROR]   symbol:   method getRecipient()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[30,68] cannot find symbol
+[ERROR]   symbol:   method getType()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[32,40] cannot find symbol
+[ERROR]   symbol:   method getType()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[32,68] cannot find symbol
+[ERROR]   symbol:   method getType()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[34,49] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[35,36] cannot find symbol
+[ERROR]   symbol:   method getCustomerId()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[36,33] cannot find symbol
+[ERROR]   symbol:   method getOrderId()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[37,35] cannot find symbol
+[ERROR]   symbol:   method getRecipient()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[38,31] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[39,33] cannot find symbol
+[ERROR]   symbol:   method getMessage()
+[ERROR]   location: variable request of type com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[47,21] cannot find symbol
+[ERROR]   symbol:   method setDeleted(boolean)
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[50,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[50,82] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable savedNotification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[59,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[70,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[81,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[92,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[102,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[106,21] cannot find symbol
+[ERROR]   symbol:   method setIsRead(boolean)
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[116,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[120,21] cannot find symbol
+[ERROR]   symbol:   method setDeleted(boolean)
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[122,9] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.service.NotificationService
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[129,36] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.response.NotificationResponse
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[130,33] cannot find symbol
+[ERROR]   symbol:   method getId()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[131,41] cannot find symbol
+[ERROR]   symbol:   method getCustomerId()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[132,38] cannot find symbol
+[ERROR]   symbol:   method getOrderId()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[133,40] cannot find symbol
+[ERROR]   symbol:   method getRecipient()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[134,36] cannot find symbol
+[ERROR]   symbol:   method getTitle()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[135,38] cannot find symbol
+[ERROR]   symbol:   method getMessage()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[136,35] cannot find symbol
+[ERROR]   symbol:   method getType()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[137,37] cannot find symbol
+[ERROR]   symbol:   method getStatus()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,40] cannot find symbol
+[ERROR]   symbol:   method getCreatedAt()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,78] cannot find symbol
+[ERROR]   symbol:   method getCreatedAt()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[138,108] cannot find symbol
+[ERROR]   symbol:   method getSentAt()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[139,37] cannot find symbol
+[ERROR]   symbol:   method getSentAt()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/service/NotificationService.java:[140,37] cannot find symbol
+[ERROR]   symbol:   method getIsRead()
+[ERROR]   location: variable notification of type com.ahmedkh.notification.entity.Notification
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[35,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[42,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[49,70] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[60,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[77,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[83,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[94,70] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[106,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[123,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[128,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[134,70] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[145,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[162,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[168,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[193,70] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[205,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[222,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[228,17] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[234,70] cannot find symbol
+[ERROR]   symbol:   method builder()
+[ERROR]   location: class com.ahmedkh.notification.dto.request.SendNotificationRequest
+[ERROR] /home/ahmedkh/storage/University/4th Year 1th Semester/Advanced Software Engineering (Dr. Abdelkareem Alashqar)/Assinments/Homework for Chapter 5/hunger-killer/notification/src/main/java/com/ahmedkh/notification/kafka/KafkaEventConsumer.java:[246,13] cannot find symbol
+[ERROR]   symbol:   variable log
+[ERROR]   location: class com.ahmedkh.notification.kafka.KafkaEventConsumer
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

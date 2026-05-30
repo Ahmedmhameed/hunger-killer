@@ -8,7 +8,6 @@ import com.ahmedkh.customer.dto.response.LoginResponse;
 import com.ahmedkh.customer.entity.Customer;
 import com.ahmedkh.customer.exception.BusinessException;
 import com.ahmedkh.customer.exception.ResourceNotFoundException;
-import com.ahmedkh.customer.kafka.CustomerEventProducer;
 import com.ahmedkh.customer.mapper.CustomerMapper;
 import com.ahmedkh.customer.repository.CustomerRepository;
 import com.ahmedkh.customer.service.CustomerService;
@@ -29,18 +28,16 @@ public class CustomerServiceImpl implements CustomerService {
     private final CustomerMapper customerMapper;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
-    private final CustomerEventProducer eventProducer;
 
     public CustomerServiceImpl(CustomerRepository customerRepository,
                               CustomerMapper customerMapper,
                               PasswordEncoder passwordEncoder,
-                              JwtUtil jwtUtil,
-                              CustomerEventProducer eventProducer) {
+                              JwtUtil jwtUtil
+                              ) {
         this.customerRepository = customerRepository;
         this.customerMapper = customerMapper;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
-        this.eventProducer = eventProducer;
     }
 
     @Override
@@ -60,9 +57,6 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer savedCustomer = customerRepository.save(customer);
         log.info("Customer registered successfully with ID: {}", savedCustomer.getId());
-
-        // Publish event
-        eventProducer.publishCustomerRegisteredEvent(savedCustomer);
 
         String token = jwtUtil.generateToken(savedCustomer.getId(), savedCustomer.getEmail());
 

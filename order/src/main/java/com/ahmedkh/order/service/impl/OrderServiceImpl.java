@@ -10,7 +10,6 @@ import com.ahmedkh.order.feign.CartServiceClient;
 import com.ahmedkh.order.feign.InventoryServiceClient;
 import com.ahmedkh.order.feign.PaymentServiceClient;
 import com.ahmedkh.order.feign.dto.*;
-import com.ahmedkh.order.kafka.OrderEventPublisher;
 import com.ahmedkh.order.mapper.OrderMapper;
 import com.ahmedkh.order.repository.OrderRepository;
 import com.ahmedkh.order.repository.OrderStatusHistoryRepository;
@@ -36,7 +35,6 @@ public class OrderServiceImpl implements OrderService {
     private final OrderStatusHistoryRepository historyRepository;
     private final OrderMapper orderMapper;
     private final OrderStateMachine orderStateMachine;
-    private final OrderEventPublisher orderEventPublisher;
     private final CartServiceClient cartServiceClient;
     private final InventoryServiceClient inventoryServiceClient;
     private final PaymentServiceClient paymentServiceClient;
@@ -181,15 +179,7 @@ public class OrderServiceImpl implements OrderService {
             return m;
         }).toList();
 
-        orderEventPublisher.publishOrderPlaced(
-                savedOrder.getId().toString(),
-                customerId,
-                savedOrder.getRestaurantId(),
-                eventItems,
-                grandTotal.doubleValue(),
-                savedOrder.getDeliveryAddress(),
-                savedOrder.getSpecialInstructions()
-        );
+
 
         return orderMapper.toResponse(savedOrder);
     }

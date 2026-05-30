@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2026-05-28T14:06:34+0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.10 (Ubuntu)"
+    date = "2026-05-29T15:41:35+0300",
+    comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.46.0.v20260407-0427, environment: Java 21.0.10 (Eclipse Adoptium)"
 )
 @Component
 public class CartMapperImpl implements CartMapper {
@@ -25,13 +25,13 @@ public class CartMapperImpl implements CartMapper {
 
         CartResponse cartResponse = new CartResponse();
 
-        cartResponse.setId( cart.getId() );
         cartResponse.setCustomerId( cart.getCustomerId() );
-        cartResponse.setRestaurantId( cart.getRestaurantId() );
-        cartResponse.setTotalAmount( cart.getTotalAmount() );
-        cartResponse.setStatus( cart.getStatus() );
         cartResponse.setExpiresAt( cart.getExpiresAt() );
+        cartResponse.setId( cart.getId() );
         cartResponse.setItems( cartItemListToCartItemResponseList( cart.getItems() ) );
+        cartResponse.setRestaurantId( cart.getRestaurantId() );
+        cartResponse.setStatus( cart.getStatus() );
+        cartResponse.setTotalAmount( cart.getTotalAmount() );
 
         return cartResponse;
     }
@@ -47,10 +47,10 @@ public class CartMapperImpl implements CartMapper {
         cartItemResponse.setId( cartItem.getId() );
         cartItemResponse.setItemId( cartItem.getItemId() );
         cartItemResponse.setItemName( cartItem.getItemName() );
-        cartItemResponse.setUnitPrice( cartItem.getUnitPrice() );
         cartItemResponse.setQuantity( cartItem.getQuantity() );
-        cartItemResponse.setSubtotal( cartItem.getSubtotal() );
         cartItemResponse.setSpecialNotes( cartItem.getSpecialNotes() );
+        cartItemResponse.setSubtotal( cartItem.getSubtotal() );
+        cartItemResponse.setUnitPrice( cartItem.getUnitPrice() );
 
         return cartItemResponse;
     }

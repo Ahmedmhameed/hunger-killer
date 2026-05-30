@@ -5,16 +5,16 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/order_db?createDatabaseIfNotExist=true
     username: root
-    password: root
+    password: 159753
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
+        dialect: org.hibernate.dialect.MySQLDialect
         format_sql: true
 
   flyway:
@@ -22,21 +22,7 @@ spring:
     locations: classpath:db/migration
     baseline-on-migrate: true
 
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      # JSON serializer so kitchen/inventory services can consume as Map<String,Object>
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      properties:
-        spring.json.add.type.headers: false
-    consumer:
-      group-id: order-service-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: "*"
+
 
 server:
   port: 8085
@@ -59,44 +45,33 @@ management:
       prometheus:
         enabled: true
   tracing:
-    sampling:
-      probability: 1.0
+    enabled: false
 
 resilience4j:
-  circuitbreaker:
-    instances:
-      cart-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-      inventory-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
-      payment-service:
-        slidingWindowSize: 10
-        failureRateThreshold: 50
-        waitDurationInOpenState: 10s
   retry:
     instances:
       cart-service:
-        maxAttempts: 3
-        waitDuration: 500ms
+        max-attempts: 3
+        wait-duration: 500ms
+
       inventory-service:
-        maxAttempts: 3
-        waitDuration: 500ms
+        max-attempts: 3
+        wait-duration: 500ms
+
       payment-service:
-        maxAttempts: 2
-        waitDuration: 1000ms
+        max-attempts: 2
+        wait-duration: 1000ms
+
   timelimiter:
     instances:
       cart-service:
-        timeoutDuration: 3s
-      inventory-service:
-        timeoutDuration: 3s
-      payment-service:
-        timeoutDuration: 10s
+        timeout-duration: 3s
 
+      inventory-service:
+        timeout-duration: 3s
+
+      payment-service:
+        timeout-duration: 10s
 app:
   jwt:
     secret: ${JWT_SECRET:hunger-killer-secret-key-must-be-at-least-256-bits-long-for-security-purposes-12345}
@@ -116,25 +91,3 @@ springdoc:
   swagger-ui:
     path: /swagger-ui.html
     enabled: true
-
----
-spring:
-  config:
-    activate:
-      on-profile: prod
-  datasource:
-    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/order_db
-    username: ${DB_USER:root}
-    password: ${DB_PASSWORD:root}
-
-server:
-  port: 8085
-
-eureka:
-  client:
-    service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
-
-app:
-  jwt:
-    secret: ${JWT_SECRET}

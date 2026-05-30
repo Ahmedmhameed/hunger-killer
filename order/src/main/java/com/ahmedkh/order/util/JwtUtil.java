@@ -17,9 +17,10 @@ public class JwtUtil {
     private String jwtSecret;
 
     private SecretKey getSigningKey() {
-        return Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+        return Keys.hmacShaKeyFor(
+                jwtSecret.getBytes(StandardCharsets.UTF_8)
+        );
     }
-
     public String getSubjectFromToken(String token) {
         return getAllClaims(token).getSubject();
     }
@@ -33,10 +34,13 @@ public class JwtUtil {
         Object role = getAllClaims(token).get("role");
         return role != null ? role.toString() : "CUSTOMER";
     }
-
     public boolean validateToken(String token) {
         try {
-            Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
+            Jwts.parser()
+                    .verifyWith(getSigningKey())
+                    .build()
+                    .parseSignedClaims(token);
+
             return true;
         } catch (JwtException | IllegalArgumentException ex) {
             log.error("JWT validation failed: {}", ex.getMessage());
@@ -45,7 +49,10 @@ public class JwtUtil {
     }
 
     private Claims getAllClaims(String token) {
-        return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
-                .parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                .verifyWith(getSigningKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 }

@@ -11,7 +11,6 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class Address extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -27,9 +26,9 @@ public class Address extends BaseEntity {
     @Column(name = "city", nullable = false, length = 100)
     private String city;
 
-    @Column(name = "gps_lat", precision = 10, scale = 8)
+    @Column(columnDefinition = "DOUBLE")
     private Double gpsLat;
 
-    @Column(name = "gps_lng", precision = 11, scale = 8)
+    @Column(columnDefinition = "DOUBLE")
     private Double gpsLng;
 }
